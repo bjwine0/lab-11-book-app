@@ -8,11 +8,12 @@
   <p><a href="/">New Search</a></p>
 
   <ul>
-    <% searchResults.forEach(item => { %>
-    <li><%= item.title %></li>
-    <li><%= item.authors %></li>
-    <li><%= item.publishedDate %></li>
-    <li><%= item.imageLinks %></li>
+    <% searchResults.forEach(volumeInfo => { %>
+    <li><%= volumeInfo.title %></li>
+    <li><%= volumeInfo.authors %></li>
+    <li><%= volumeInfo.publishedDate %></li>
+    <!-- <li><%= volumeInfo.imageLinks %></li> -->
+    <li><%= volumeInfo.placeholderImage %></li>
     <% }); %>
   </ul>
 
