@@ -17,16 +17,12 @@
     "url": "https://github.com/bjwine0/lab-11-book-app/issues"
   },
   "homepage": "https://github.com/bjwine0/lab-11-book-app#readme",
-<<<<<<< HEAD
-  "dependencies": {
-=======
   "keywords": [
     "book",
     "app"
   ],
   "dependencies": {
     "dotenv": "^8.0.0",
->>>>>>> db0b26ccae300900c04bfe4a8c6e18ac117fea24
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "superagent": "^5.0.5"
