@@ -1,4 +1,5 @@
 'use strict';
+
 // Load environment
 require('dotenv').config();
 
@@ -9,7 +10,7 @@ const ejs = require('ejs');
 
 // APP Setup
 const app = express();
-const port = process.env.PORT||3000;
+const PORT = process.env.PORT||3000;
 
 // APP middleware
 app.use(express.urlencoded({extended:true}));
@@ -19,7 +20,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // API routes -- render the search form
-app.get('/', createSearch);
+app.get('/', newSearch);
 
 // catch-all
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -42,7 +43,7 @@ function newSearch (request, response){
 // NO API key required
 // you should console.log(request.body) AND (request.body.search); all that.
 function createSearch(request, response){
-  console.log(requet.body);
+  console.log(request.body);
   let url ='https://www.googleapis.com/books/v1/volumes?q=';
   if (request.body.search[1]==='title') {url+= `+intitle:${request.body.search[0]}`;}
   if (request.body.search[1]==='author') {url+= `+inauthor:${request.body.search[0]}`;}
@@ -58,12 +59,12 @@ function createSearch(request, response){
 
 
 
-  .catch(err=>handleError(err,response));
+  // .catch(err=>handleError(err,response));
 
 }
 
 function handleError(err, response){
   console.log(err);
   if(response)response.status(500).send('Sorry, something went wrong');
-  
+
 }
