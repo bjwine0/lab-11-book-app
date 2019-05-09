@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <h1>Book Results</h1>
+  <p><a href="/">New Search</a></p>
+
+  <ul>
+    <% searchResults.forEach(volumeInfo => { %>
+    <li><%= volumeInfo.title %></li>
+    <li><%= volumeInfo.authors %></li>
+    <li><%= volumeInfo.publishedDate %></li>
+    <!-- <li><%= volumeInfo.imageLinks %></li> -->
+    <li><img src='<%= volumeInfo.placeholderImage %>' /></li>
+    <% }); %>
+  </ul>
+
+  
+</body>
+
+</html>

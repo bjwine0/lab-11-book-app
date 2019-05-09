@@ -21,6 +21,10 @@ app.set('view engine', 'ejs');
 
 // API routes -- render the search form
 app.get('/', newSearch);
+// app.get('/', createSearch);
+
+// Creates a new search to the Google Books API
+app.post('/searches', createSearch);
 
 // catch-all
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -30,8 +34,11 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 //Helper functions
 
 function Book(info) {
-  const placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg';
+  this.placeholderImage = `https://i.imgur.com/J5LVHEL.jpg`;
   this.title = info.title || 'No title available';
+  this.authors = info.authors || 'No author available';
+  this.publishedDate = info.publishedDate || 'No date of publication available';
+  this.imageLinks = `http://books.google.com/books/content?id=${info.id}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api`;
 
 }
 
@@ -50,12 +57,13 @@ function createSearch(request, response){
 
   console.log(url);
 
-  response.send('Ok');
+  // response.send('Ok');
 
   superagent.get(url)
-  .then(apiResponse=>apiResponse.body.items.map(bookResult=> new Book(bookResult.volumeInfo)))
-    .then(results=>response.render('pages/searches/show', {searchResults: results}));
-
+    
+    .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
+    
+    .then(results => response.render('pages/searches/show', {searchResults: results}));
 
 
 
@@ -63,8 +71,8 @@ function createSearch(request, response){
 
 }
 
-function handleError(err, response){
-  console.log(err);
-  if(response)response.status(500).send('Sorry, something went wrong');
+// function handleError(err, response){
+//   console.log(err);
+//   if(response)response.status(500).send('Sorry, something went wrong');
 
-}
+// }
