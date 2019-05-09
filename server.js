@@ -34,7 +34,7 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 //Helper functions
 
 function Book(info) {
-  this.placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg';
+  this.placeholderImage = `https://i.imgur.com/J5LVHEL.jpg`;
   this.title = info.title || 'No title available';
   this.authors = info.authors || 'No author available';
   this.publishedDate = info.publishedDate || 'No date of publication available';
