@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <h1>Book Results</h1>
+  <p><a href="/">New Search</a></p>
+
+  <ul>
+    <% searchResults.forEach(item => { %>
+    <li><%= item.title %></li>
+    <li><%= item.authors %></li>
+    <li><%= item.publishedDate %></li>
+    <li><%= item.imageLinks %></li>
+    <% }); %>
+  </ul>
+
+  
+</body>
+
+</html>
