@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/bjwine0/lab-11-book-app/issues"
   },
-  "homepage": "https://github.com/bjwine0/lab-11-book-app#readme"
+  "homepage": "https://github.com/bjwine0/lab-11-book-app#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "superagent": "^5.0.5"
+  }
 }
