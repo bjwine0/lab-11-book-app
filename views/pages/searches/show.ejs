@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+  <title>Your Tailored Search Results</title>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|B612+Mono|Inconsolata|Neucha" rel="stylesheet">
+  <link href="..//styles/reset.css" rel="stylesheet"/>
+  <link href="../styles/base.css" rel="stylesheet"/>
+  <link href="../styles/layouts.css" rel="stylesheet"/>
+  <link href="../styles/modules.css" rel="stylesheet"/> 
+
+</head>
 
 <body>
+  <main>
   <h1>Book Results</h1>
   <p><a href="/">New Search</a></p>
 
   <ul>
     <% searchResults.forEach(volumeInfo => { %>
+      <div>
     <li><img src='<%= volumeInfo.imageLinks %>' /></li>
     <li><%= volumeInfo.title %></li>
     <li><%= volumeInfo.authors %></li>
-    <li><%= volumeInfo.description %></li>
+    <li><%= volumeInfo.description %></li></div>
     <% }); %>
-  </ul>
 
+  </ul>
+</main>
   
 </body>
 
