@@ -17,6 +17,12 @@ Given that the user enters a seach query
 When the user submits the search form
 Then the search query should be included in a request to the Google Books API
 
+#Feature 3
+As a user, I want to be able to browse the search results.
+Given that the user enters a seach query
+When the user submits the search form
+Then the first ten books should be displayed to the user
+
 
 
 ## Getting Started
@@ -32,10 +38,13 @@ Then the search query should be included in a request to the Google Books API
 2 This form should be displayed to the user on page load, so your corresponding endpoint should be /, the home route.
 3 Make a PR to master and confirm functionality on your deployed site.
 
+#Feature 3 Steps
+
 
 ## Architecture
 #Feature 1 - Html/ Css/ Javascript / EJS
 #Feature 2 -
+#Feature 3 -
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
@@ -58,6 +67,17 @@ Actual time needed to complete: _____
 
 
 Number and name of feature: _____Feature 2__________________________
+
+Estimate of time needed to complete: ____4 hrs_
+
+Start time: ____2000_
+
+Finish time: ____2130 not done    continue 1830_
+
+Actual time needed to complete: _____
+
+
+Number and name of feature: _____Feature 3__________________________
 
 Estimate of time needed to complete: ____4 hrs_
 
