@@ -34,10 +34,10 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 //Helper functions
 
 function Book(info) {
-  this.placeholderImage = `https://i.imgur.com/J5LVHEL.jpg`;
-  this.title = info.title || 'No title available';
-  this.authors = info.authors || 'No author available';
-  this.publishedDate = info.publishedDate || 'No date of publication available';
+  // this.placeholderImage = `https://i.imgur.com/J5LVHEL.jpg`;
+  this.title = info.volumeInfo.title || 'No title available';
+  this.authors = info.volumeInfo.authors || 'No author available';
+  this.publishedDate = info.volumeInfo.publishedDate || 'No date of publication available';
   this.imageLinks = `http://books.google.com/books/content?id=${info.id}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api`;
 
 }
@@ -61,7 +61,7 @@ function createSearch(request, response){
 
   superagent.get(url)
     
-    .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
+    .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult)))
     
     .then(results => response.render('pages/searches/show', {searchResults: results}));
 
