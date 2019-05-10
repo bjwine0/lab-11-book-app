@@ -1,0 +1,75 @@
+
+main{
+  width:80%;
+  margin:0px auto;
+  background: rgba(92, 171, 125, 0.85);
+}
+
+p{
+  background:#5CAB7D;
+}
+
+form{
+  background: rgba(176, 178, 184, 0.473);
+  width:80%;
+  padding:20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+input{
+  background: white;
+  color:#888;
+  font-family: 'Inconsolata', monospace;
+  padding:10px;
+  font-size: 18px;
+  border:none;
+  width:90%;
+  box-sizing: border-box;
+  margin:0px auto;
+}
+
+fieldset{
+  color: #555;
+  font-size: 18px;
+  /* width:250px; */
+  padding:10px;
+  margin:0px auto;
+  /* display: inline; */
+  /* flex-grow: 1; */
+  /* flex-basis: auto; */
+  box-sizing: border-box;
+}
+
+
+button{
+  font-family: 'Neucha', cursive;
+  font-size: 20px;
+  color:#fff;
+  background: #F4AC45;
+  width:90%;
+  border: 0;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.35s ease-in-out;
+  box-sizing: border-box;
+  margin:0px auto;
+}
+
+
+ul{
+  margin:0px auto;
+}
+
+div{
+  margin:10px auto;
+  width:90%;
+  padding: 5%;
+  border: #5CAB7D;
+  box-sizing: border-box;
+  background: rgba(176, 178, 184, 0.473);
+  line-height: 1.25em;
+}
