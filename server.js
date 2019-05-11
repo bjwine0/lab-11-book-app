@@ -7,10 +7,16 @@ require('dotenv').config();
 const express = require('express');
 const superagent = require('superagent');
 const ejs = require('ejs');
+const pg = require('pg');
 
 // APP Setup
 const app = express();
-const PORT = process.env.PORT||3000;
+const PORT = process.env.PORT;
+
+//Database setup
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err => console.error(err));
 
 // APP middleware
 app.use(express.urlencoded({extended:true}));
@@ -21,7 +27,7 @@ app.set('view engine', 'ejs');
 
 // API routes -- render the search form
 app.get('/', newSearch);
-// app.get('/', handleError);
+
 
 // Creates a new search to the Google Books API
 app.post('/searches', createSearch);
@@ -34,9 +40,10 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 //Helper functions
 
 function Book(info) {
-  this.title = info.volumeInfo.title || 'No title available';
-  this.authors = info.volumeInfo.authors || 'No author available';
-  this.description = info.volumeInfo.description || 'No description available';
+  this.title = info.volumeInfo.title ? info.volumeInfo.title : 'No title available';
+  this.authors = info.volumeInfo.authors ? info.volumeInfo.authors : 'No author available';
+  this.description = info.volumeInfo.description ? info.volumeInfo.description : 'No description available';
+  this.isbn = info.volumeInfo.industryIdentifiers ? `ISBN_13 ${info.volumeInfo.industryIdentifiers[0].identifier}`: 'No ISBN Available';
   this.imageLinks = `http://books.google.com/books/content?id=${info.id}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api`;
 
 }
