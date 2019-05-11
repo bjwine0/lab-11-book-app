@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <%- include('../../layout/head') %>
+    <%- include('../../layout/head') %>
 </head>
 
 <body>
@@ -12,16 +12,17 @@
 
   <ul>
     <% searchResults.forEach(volumeInfo => { %>
-      <div>
+  <div>
     <li><img src='<%= volumeInfo.imageLinks %>' /></li>
     <li><%= volumeInfo.title %></li>
     <li><%= volumeInfo.authors %></li>
-    <li><%= volumeInfo.description %></li></div>
-    <% }); %>
+    <li><%= volumeInfo.description %></li>
+  </div>
+  <% }); %>
 
   </ul>
-</main>
-  
-</body>
+  </main>
+
+  </body>
 
 </html>
