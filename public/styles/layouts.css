@@ -73,3 +73,35 @@ div{
   background: rgba(176, 178, 184, 0.473);
   line-height: 1.25em;
 }
+
+li {
+  margin-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+img {
+  height: 100%;
+  width: 30%;
+}
+
+.img {
+  height: 250px;
+  /* width: 180px; */
+}
+
+.title {
+  width: 300px;
+  display: inline-block;
+}
+
+.author {
+
+}
+
+.description {
+  overflow: scroll;
+  height: 80px;
+  width: 300px;
+  display: inline-block;
+  /* display: initial; */
+}

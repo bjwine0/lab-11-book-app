@@ -2,27 +2,27 @@
 <html>
 
 <head>
-    <%- include('../../layout/head') %>
+  <%- include('../../layout/head') %>
 </head>
 
 <body>
   <main>
-  <h1>Book Results</h1>
-  <p><a href="/">New Search</a></p>
+  <h1><%= searchResults.length %> Book Results</h1>
+  <p><a href="/new">New Search</a></p>
+  <p><a href="/">Saved Books</a></p>
 
   <ul>
     <% searchResults.forEach(volumeInfo => { %>
-  <div>
-    <li><img src='<%= volumeInfo.imageLinks %>' /></li>
-    <li><%= volumeInfo.title %></li>
-    <li><%= volumeInfo.authors %></li>
-    <li><%= volumeInfo.description %></li>
-  </div>
-  <% }); %>
+      <div>
+    <li class="img"><img src='<%= volumeInfo.imageLinks %>' /></li>
+    <li class="title"><%= volumeInfo.title %></li>
+    <li class="author"><%= volumeInfo.authors %></li>
+    <li class="description"><%= volumeInfo.description %></li></div>
+    <% }); %>
 
   </ul>
-  </main>
-
-  </body>
+</main>
+  
+</body>
 
 </html>
