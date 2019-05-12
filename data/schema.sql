@@ -10,5 +10,11 @@ CREATE TABLE books (
   bookshelf VARCHAR(255)   
 );
 
+
+
 INSERT INTO books (title, author, isbn, image_url, description, bookshelf)
-VALUES()
+VALUES('Game', 'who', '2453433', 'https://sdkjngosg', 'thanos dies', 'End game');
+
+
+INSERT INTO books (title, author, isbn, image_url, description, bookshelf)
+VALUES('buddy','who', '4598734957','https://jfydhgfyhdthosg', 'he\''s an elf?', 'buddy the elf');

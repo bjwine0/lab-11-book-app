@@ -7,16 +7,19 @@
 
 <body>
   <main>
-  <h1>Book Results</h1>
-  <p><a href="/">New Search</a></p>
+  <h1><%= results.length %> Saved Books</h1>
+  <p><a href="/new">New Search</a></p>
+  <!-- <p><a href="/searches">API Search Results</a></p> -->
 
   <ul>
-    <% searchResults.forEach(volumeInfo => { %>
+    <% results.forEach(bookInfo => { %>
       <div>
-    <li><img src='<%= volumeInfo.imageLinks %>' /></li>
-    <li><%= volumeInfo.title %></li>
-    <li><%= volumeInfo.authors %></li>
-    <li><%= volumeInfo.description %></li></div>
+    <li class="img"><img src='<%= bookInfo.image_url %>' /></li>
+    <li class="title"><%= bookInfo.title %></li>
+    <li class="author"><%= bookInfo.author %></li>
+    <button type="button" onclick="alert('Hello world!')">View Details</button>
+    <!-- <li><%= bookInfo.isbn %></li></div> -->
+    <!-- <li class="description"><%= bookInfo.description %></li></div> -->
     <% }); %>
 
   </ul>
