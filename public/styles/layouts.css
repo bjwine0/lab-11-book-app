@@ -5,8 +5,12 @@ main{
   background: rgba(92, 171, 125, 0.85);
 }
 
-p{
-  background:#5CAB7D;
+header{
+  /* display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  align-items: center; */
+  background: #F4AC45;
 }
 
 form{
@@ -72,6 +76,9 @@ div{
   box-sizing: border-box;
   background: rgba(176, 178, 184, 0.473);
   line-height: 1.25em;
+  -moz-box-shadow: 3px 4px 5px 0px rgba(39, 48, 67, 0.75);
+  -webkit-box-shadow: 3px 4px 5px 0px rgba(39, 48, 67, 0.75);
+  box-shadow: 3px 4px 5px 0px rgba(39, 48, 67, 0.75);
 }
 
 li {
@@ -82,6 +89,9 @@ li {
 img {
   height: 100%;
   width: 30%;
+  -moz-box-shadow: 3px 4px 5px 0px rgba(39, 48, 67, 0.75);
+  -webkit-box-shadow: 3px 4px 5px 0px rgba(39, 48, 67, 0.75);
+  box-shadow: 3px 4px 5px 0px rgba(39, 48, 67, 0.75);
 }
 
 .img {

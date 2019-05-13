@@ -6,6 +6,9 @@
 </head>
 
 <body>
+    <header>
+        <%- include('../../layout/header') %>
+    </header>
   <main>
   <h1><%= searchResults.length %> Book Results</h1>
   <p><a href="/new">New Search</a></p>
@@ -22,7 +25,9 @@
 
   </ul>
 </main>
-  
+<footer> 
+    <%- include('../../layout/footer') %>
+</footer>
 </body>
 
 </html>
