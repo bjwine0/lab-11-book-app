@@ -1,3 +1,6 @@
+<!-- pages/searches/show  -->
+
+<!-- New search for 10 books -->
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +13,8 @@
         <%- include('../../layout/header') %>
     </header>
   <main>
-    <!-- sub navigation -->
+    
+
     <ul class="subnav">
         <li>
           <i class="fas fa-search"></i>
@@ -21,27 +25,37 @@
           <a href="/">Shelf</a>
         </li>
       </ul>
-    <!-- end subnav -->
-  <h1><%= results.length %> Saved Books</h1>
-  <!-- <p><a href="/searches">API Search Results</a></p> -->
+      
+  <h1><%= searchResults.length %> Book Results</h1>
 
   <ul>
-    <% results.forEach(bookInfo => { %>
-      <div>
-    <li class="img left"><img src='<%= bookInfo.image_url %>' /></li>
-    <li class="title right"><%= bookInfo.title %></li>
-    <li class="author right"><%= bookInfo.author %></li>
-    <button class="right" type="button" onclick="alert('Hello world!')">View Details</button>
-    <!-- <li><%= bookInfo.isbn %></li>
-    <li class="description"><%= bookInfo.description %></li> -->
+    <% searchResults.forEach(volumeInfo => { %>
+  <div>
+    <li class="img"><img src='<%= volumeInfo.imageLinks %>' /></li>
+    <li class="title"><h4><%= volumeInfo.title %></h4></li>
+    <li class="author"><%= volumeInfo.authors %></li>
+    <li class="description"><%= volumeInfo.description %></li>
+    <button type="button" name="<%= volumeInfo.identifier%>" >Select this Book</button>
+          <form action="/searches/save_id" method="post" id="<%= volumeInfo.identifier %>">
+            <input type="text" name="title" value="<%= volumeInfo.title %>" />
+            <input type="text" name="author" value="<%= volumeInfo.authors %>" />
+            <input type="textarea" name="description" value="<%= volumeInfo.description %>" />
+            <input type="text" name="isbn" value="<%= volumeInfo.identifier %>" />
+            <input type="text" name="bookshelf" value="<%= volumeInfo.bookshelf %>" />
+            <button type="submit">Save to Database</button>
+          </form>
   </div>
     <% }); %>
-<!-- there were two closing divs. -->
+
   </ul>
 </main>
 <footer> 
     <%- include('../../layout/footer') %>
 </footer>
+
+
 </body>
 
 </html>
+
+

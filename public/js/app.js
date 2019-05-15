@@ -7,3 +7,9 @@ function myFunction() {
     hamMenu.className = 'topnav';
   }
 }
+
+$(document).ready(function(){
+  $('#buttonForm').click(function(){
+    $('#hidden').toggle();
+  });
+});

@@ -88,3 +88,7 @@
   flex-flow: row nowrap;
   align-content: space-around;
 }
+
+#hidden {
+  display: none;
+}
