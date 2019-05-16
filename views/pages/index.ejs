@@ -1,59 +1,48 @@
+<!-- index.ejs -->
+
+<!-- getBooksFromDb -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <%- include('../layout/head') %>
-
 </head>
 
 <body>
-  <header>
-    <%- include('../layout/header') %>
-  </header>
-
-  <!-- main body starts here-->
+    <header>
+        <%- include('../layout/header') %>
+    </header>
   <main>
-    <!-- sub navigation -->
+    
     <ul class="subnav">
-      <li>
-        <i class="fas fa-search"></i>
-        <a href="/new">Search</a>
-      </li>
-      <li>
-          <i class="fas fa-book-open"></i>
-        <a href="/">Shelf</a>
-      </li>
-    </ul>
-    <!-- end subnav -->
+        <li>
+          <i class="fas fa-search"></i>
+          <a href="/new">Search</a>
+        </li>
+        <li>
+            <i class="fas fa-book-open"></i>
+          <a href="/">Shelf</a>
+        </li>
+      </ul>
+    
+  <h1><%= results.length %> Saved Books</h1>
+  
 
-    <!-- Search form area -->
-    <form action="/searches" method="post">
-      <section class="searchbar">
-        <input type="text" name="search" placeholder="favorite title or author" required>
-        <button type="submit">
-          <i class="fab fa-google"></i>
-        </button>
-      </section>
+  <ul>
+    <% results.forEach(bookInfo => { %>
+      <div>
+      <li class="img left"><img src='<%= bookInfo.id %>' /></li>
+      <li class="title right"><%= bookInfo.title %></li>
+      <li class="author right"><%= bookInfo.author %></li>
+      <button class="right" type="button" onclick="location.href='/books/<%= bookInfo.id %>';">View Details</button>
+      </div>
+    <% }); %>
 
-      <section class="radiobuttons">
-        <fieldset>
-          <label for="title">
-            <span>Title</span>
-            <input type="radio" name="search" value="title" required>
-          </label>
-        </fieldset>
-        <fieldset>
-          <label for="author">
-            <span>Author</span>
-            <input type="radio" name="search" value="author" required>
-          </label>
-        </fieldset>
-      </section>
-    </form>
-  </main>
-  <footer>
+  </ul>
+</main>
+<footer> 
     <%- include('../layout/footer') %>
-  </footer>
+</footer>
 </body>
 
 </html>

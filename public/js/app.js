@@ -9,9 +9,9 @@ function myFunction() {
 }
 
 
-// $('div button').on('click', function () {
-//   let $switch = $(this).data('tab');
-//   console.log('switch to ', $switch);
-//   $('.tab-content').hide();
-//   $('#' + $switch).fadeIn(750)
-// })
+$(document).ready(function(){
+  $('#buttonForm').click(function(){
+    $('#hidden').toggle();
+  });
+});
+
