@@ -32,7 +32,8 @@ app.get('/new', searchForm);  //   searches/new
 app.post('/searches', searchNewBooks);  // searches/show
 app.get('/books/:book_id', viewDetails); // books/show
 // app.post('/searches/:save_id', saveBookToDB);
-
+// app.post('/add', addBook);//????????
+// app.put('/update/:book_id', updateBook);//????????
 
 // catch-all
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -66,7 +67,7 @@ function viewDetails(request, response) {
 
   return client.query(SQL, values)
     .then(results => {
-      console.log('line 70', results);
+      console.log('line 70', results.rows[0]);
       return response.render('pages/books/show', { results: results.rows[0] });
     })
     .catch(err => handleError(err, response));
@@ -85,15 +86,37 @@ function searchNewBooks(request, response){
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult)))
     .then(results => {
       console.log('line103','results[1].identifier',results); //[1].identifier
-      response.render('pages/searches/show', {searchResults: results})})
-
-
+      response.render('pages/searches/show', {searchResults: results})
+    })
 
     .catch(err => handleError(err,response));
 
 }
 
+function addBook(request, response) {
+  console.log(request.body);
+  let { title, author, isbn, image_url, description, bookshelf} = request.body;
 
+  let SQL = 'INSERT INTO books(title, author, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);';
+  let values = [title, author, isbn, image_url, description, bookshelf];
+
+  return client.query(SQL, values)
+    .then(response.redirect('/'))
+    .catch(err => handleError(err, response));
+}
+
+function updateBook(request, response) {
+  // destructure variables
+  let { title, author, isbn, image_url, description, bookshelf} = request.body;
+  // need SQL to update the specific task that we were on
+  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 bookshelf=$6 WHERE id=$7;`;
+  // use request.params.task_id === whatever task we were on
+  let values = [title, author, isbn, image_url, description, bookshelf, request.params.book_id];
+
+  client.query(SQL, values)
+    .then(response.redirect(`/tasks/${request.params.book_id}`))  //change tasks path ?????????
+    .catch(err => handleError(err, response));
+}
 
 //Constructor
 function Book(info) {

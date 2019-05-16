@@ -31,7 +31,7 @@
   <ul>
     <% results.forEach(bookInfo => { %>
       <div>
-      <li class="img left"><img src='<%= bookInfo.image_url %>' /></li>
+      <li class="img left"><img src='<%= bookInfo.id %>' /></li>
       <li class="title right"><%= bookInfo.title %></li>
       <li class="author right"><%= bookInfo.author %></li>
       <button class="right" type="button" onclick="location.href='/books/<%= bookInfo.id %>';">View Details</button>
