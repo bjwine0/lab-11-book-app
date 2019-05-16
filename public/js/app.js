@@ -8,8 +8,10 @@ function myFunction() {
   }
 }
 
+
 $(document).ready(function(){
   $('#buttonForm').click(function(){
     $('#hidden').toggle();
   });
 });
+
