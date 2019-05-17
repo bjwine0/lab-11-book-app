@@ -41,14 +41,11 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 
 //Helper functions
-
-
 function getBooksFromDB(request, response){
   let SQL = 'SELECT * FROM books;';
 
   return client.query(SQL)
     .then(results => {
-      console.log('line 55', 'results.rows', results.rows);
       response.render('pages/index', { results: results.rows })
     })
     .catch(handleError);
@@ -59,27 +56,20 @@ function searchForm (request, response){
 }
 
 function viewDetails(request, response) {
-
-  console.log('BOOK ID = ', request.params.book_id);
-
   let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [request.params.book_id];
 
   return client.query(SQL, values)
     .then(results => {
-      console.log('line 70', results.rows[0]);
       return response.render('pages/books/show', { results: results.rows[0] });
     })
     .catch(err => handleError(err, response));
 }
 
 function searchNewBooks(request, response){
-  console.log('line77', 'request.body',request.body);
   let url ='https://www.googleapis.com/books/v1/volumes?q=';
   if (request.body.search[1]==='title') {url+= `+intitle:${request.body.search[0]}`;}
   if (request.body.search[1]==='author') {url+= `+inauthor:${request.body.search[0]}`;}
-  // console.log(url);
-  // response.send('Ok');
 
   superagent.get(url)
 
@@ -88,13 +78,10 @@ function searchNewBooks(request, response){
       console.log('line103','results[1].identifier',results); //[1].identifier
       response.render('pages/searches/show', {searchResults: results})
     })
-
     .catch(err => handleError(err,response));
-
 }
 
 function saveBookToDB(request, response) {
-  // console.log('$$$$$$$$$$$$$$$$$$$$$request.body',request.body);
 
   let { title, author, isbn, image_url, description, bookshelf} = request.body;
 
@@ -107,15 +94,13 @@ function saveBookToDB(request, response) {
 }
 
 function updateBook(request, response) {
-  // destructure variables
   let { title, author, isbn, image_url, description, bookshelf} = request.body;
-  // need SQL to update the specific task that we were on
   let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 bookshelf=$6 WHERE id=$7;`;
-  // use request.params.task_id === whatever task we were on
+
   let values = [title, author, isbn, image_url, description, bookshelf, request.params.book_id];
 
   client.query(SQL, values)
-    .then(response.redirect(`/books/${request.params.book_id}`))  //change tasks path ?????????
+    .then(response.redirect(`/books/${request.params.book_id}`))  
     .catch(err => handleError(err, response));
 }
 
@@ -130,8 +115,6 @@ function Book(info) {
 
 }
 
-// this.image = info.imageLinks ? info.imageLinks.thumbnail.replace('http:', 'https:') : placeholderImage;
-
 function handleError(error, response){
   console.log(error);
   console.log('response', response);
@@ -139,4 +122,4 @@ function handleError(error, response){
 }
 
 
-lsnfosdbnodsfbnodsfbvinf
+
