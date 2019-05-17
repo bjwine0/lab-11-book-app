@@ -29,6 +29,7 @@
   <h1><%= searchResults.length %> Book Results</h1>
 
   <ul>
+
     <% searchResults.forEach(volumeInfo => { %>
   <div>
     <li class="img"><img src="<%= volumeInfo.image_url %>"></li>
@@ -44,7 +45,7 @@
             <input type="text" name="image_url" value="<%= volumeInfo.image_url %>" />
             <input type="text" name="bookshelf" value="<%= volumeInfo.bookshelf %>" placeholder="Bookshelf: Assign it to a bookshelf"/>
             <button type="submit">Save to Database</button>
-    </form>
+
   </div>
     <% }); %>
 
