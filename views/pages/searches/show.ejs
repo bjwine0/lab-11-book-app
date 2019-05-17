@@ -31,19 +31,20 @@
   <ul>
     <% searchResults.forEach(volumeInfo => { %>
   <div>
-    <li class="img"><img src='<%= volumeInfo.imageLinks %>' /></li>
+    <li class="img"><img src="<%= volumeInfo.image_url %>"></li>
     <li class="title"><h4><%= volumeInfo.title %></h4></li>
     <li class="author"><%= volumeInfo.authors %></li>
     <li class="description"><%= volumeInfo.description %></li>
-    <button type="button" name="<%= volumeInfo.identifier%>" >Select this Book</button>
-          <form action="/searches/save_id" method="post" id="<%= volumeInfo.identifier %>">
+    <button type="button" class="showButton" form="<%= volumeInfo.title %>" name="<%= volumeInfo.title %>" >Select this Book</button>
+    <form action="/searches/book_id" method="post" id="<%= volumeInfo.title %>" class="form"> 
             <input type="text" name="title" value="<%= volumeInfo.title %>" />
             <input type="text" name="author" value="<%= volumeInfo.authors %>" />
             <input type="textarea" name="description" value="<%= volumeInfo.description %>" />
             <input type="text" name="isbn" value="<%= volumeInfo.identifier %>" />
-            <input type="text" name="bookshelf" value="<%= volumeInfo.bookshelf %>" />
+            <input type="text" name="image_url" value="<%= volumeInfo.image_url %>" />
+            <input type="text" name="bookshelf" value="<%= volumeInfo.bookshelf %>" placeholder="Bookshelf: Assign it to a bookshelf"/>
             <button type="submit">Save to Database</button>
-          </form>
+    </form>
   </div>
     <% }); %>
 

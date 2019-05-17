@@ -31,8 +31,8 @@ app.get('/', getBooksFromDB);  //  pages/index
 app.get('/new', searchForm);  //   searches/new
 app.post('/searches', searchNewBooks);  // searches/show
 app.get('/books/:book_id', viewDetails); // books/show
-// app.post('/searches/:save_id', saveBookToDB);
-// app.post('/add', addBook);//????????
+app.post('/searches/:book_id', saveBookToDB); // redirect to home '/' page
+// app.post('/books/:book_id', addBook);//????????
 // app.put('/update/:book_id', updateBook);//????????
 
 // catch-all
@@ -93,8 +93,9 @@ function searchNewBooks(request, response){
 
 }
 
-function addBook(request, response) {
-  console.log(request.body);
+function saveBookToDB(request, response) {
+  // console.log('$$$$$$$$$$$$$$$$$$$$$request.body',request.body);
+
   let { title, author, isbn, image_url, description, bookshelf} = request.body;
 
   let SQL = 'INSERT INTO books(title, author, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);';
@@ -114,19 +115,22 @@ function updateBook(request, response) {
   let values = [title, author, isbn, image_url, description, bookshelf, request.params.book_id];
 
   client.query(SQL, values)
-    .then(response.redirect(`/tasks/${request.params.book_id}`))  //change tasks path ?????????
+    .then(response.redirect(`/books/${request.params.book_id}`))  //change tasks path ?????????
     .catch(err => handleError(err, response));
 }
 
 //Constructor
 function Book(info) {
+  const placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg';
   this.title = info.volumeInfo.title ? info.volumeInfo.title : 'No title available';
   this.authors = info.volumeInfo.authors ? info.volumeInfo.authors : 'No author available';
   this.description = info.volumeInfo.description ? info.volumeInfo.description : 'No description available';
   this.identifier = info.volumeInfo.industryIdentifiers[0].identifier ? `ISBN_13 ${info.volumeInfo.industryIdentifiers[0].identifier}`: 'No ISBN Available';
-  this.imageLinks = `http://books.google.com/books/content?id=${info.id}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api`;
+  this.image_url = info.volumeInfo.imageLinks ? info.volumeInfo.imageLinks.thumbnail.replace('http:', 'https:') : placeholderImage;
 
 }
+
+// this.image = info.imageLinks ? info.imageLinks.thumbnail.replace('http:', 'https:') : placeholderImage;
 
 function handleError(error, response){
   console.log(error);

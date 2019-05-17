@@ -89,6 +89,6 @@
   align-content: space-around;
 }
 
-#hidden {
+.form {
   display: none;
 }
