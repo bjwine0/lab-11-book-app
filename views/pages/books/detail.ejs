@@ -1,40 +1,40 @@
 
 <section id="" class="book">
   
-    <img src=<%= results.image_url %> alt="Cover for <%= results.title %>" />
-    <h2><%= results.title %></h2>
-    <h3><%= results.author %></h3>
-    <p><%= results.description %></p>
-    <p><%= results.isbn %></p>
-    <p>Bookshelf <%= results.bookshelf %></p>
+  <img src=<%= results.image_url %> alt="Cover for <%= results.title %>" />
+  <h2><%= results.title %></h2>
+  <h3><%= results.author %></h3>
+  <p><%= results.description %></p>
+  <p><%= results.isbn %></p>
+  <p>Bookshelf <%= results.bookshelf %></p>
     
-          <form action="/searches/book_id" method="post" id="<%= results.isbn %>">
+  <form action="/searches/book_id" method="post" id="<%= results.isbn %>">
             
-            <input type="text" name="title" value="<%= results.title %>" />
-            <input type="text" name="author" value="<%= results.author %>" />
-            <input type="textarea" name="description" value="<%= results.description %>" />
-            <input type="text" name="isbn" value="<%= results.isbn %>" />
-            <input type="text" name="image_url" value="<%= results.image_url %>" />
+  <input type="text" name="title" value="<%= results.title %>" />
+  <input type="text" name="author" value="<%= results.author %>" />
+  <input type="textarea" name="description" value="<%= results.description %>" />
+  <input type="text" name="isbn" value="<%= results.isbn %>" />
+  <input type="text" name="image_url" value="<%= results.image_url %>" />
             
 
 
-            <label for="bookshelf">Change Bookshelf:</label>
-            <input list="book-genres" id="bookshelf" name="bookshelf" placeholder="<%= results.bookshelf %>" />
+  <label for="bookshelf">Change Bookshelf:</label>
+  <input list="book-genres" id="bookshelf" name="bookshelf" placeholder="<%= results.bookshelf %>" />
 
-            <datalist id="book-genres">
-              <option value="Fantasy"></option>
-              <option value="Science Fiction"></option>
-              <option value="Westerns"></option>
-              <option value="Romance"></option>
-              <option value="Thriller"></option>
-              <option value="Mystery"></option>
-              <option value="Detective Story"></option>
-              <option value="Dystopia"></option>
-              <option value="General"></option>
-            </datalist>
+  <datalist id="book-genres">
+    <option value="Fantasy"></option>
+    <option value="Science Fiction"></option>
+    <option value="Westerns"></option>
+    <option value="Romance"></option>
+    <option value="Thriller"></option>
+    <option value="Mystery"></option>
+    <option value="Detective Story"></option>
+    <option value="Dystopia"></option>
+    <option value="General"></option>
+  </datalist>
 
-            <button type="button" name="<%= results.isbn%>" >Delete</button>
-            <button type="submit">Update Details</button>
-          </form>
+  <button type="button" name="<%= results.isbn%>" >Delete</button>
+  <button type="submit">Update Details</button>
+  </form>
 </section>
     
