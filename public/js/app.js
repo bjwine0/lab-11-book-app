@@ -9,10 +9,7 @@ function myFunction() {
 }
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 340676cacc8c6a10f60cb085eca7dcf8d2e0e015
 $(document).ready(function(){
   // $('.form').hide();
   $('.showButton').click(function(){
@@ -26,8 +23,4 @@ $(document).ready(function(){
   });
 });
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 340676cacc8c6a10f60cb085eca7dcf8d2e0e015
