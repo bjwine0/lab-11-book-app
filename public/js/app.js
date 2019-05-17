@@ -9,16 +9,10 @@ function myFunction() {
 }
 
 
-
 $(document).ready(function(){
-  // $('.form').hide();
   $('.showButton').click(function(){
-    // var target = event.target.name;
-    // console.log(event.target.name);
-
-    var on = $('.form').is(':visible');
-    $('.form').slideToggle();
-    // }
+    var on = $(this.form).is(':visible');
+    $(this.form).slideToggle();
     $(this).html(on ? 'Select This Book' : 'Hide Form');
   });
 });
@@ -26,5 +20,5 @@ $(document).ready(function(){
 
 
 
-// changes
+
 
