@@ -32,8 +32,8 @@ app.get('/new', searchForm);  //   searches/new
 app.post('/searches', searchNewBooks);  // searches/show
 app.get('/books/:book_id', viewDetails); // books/show
 app.post('/searches/:book_id', saveBookToDB); // redirect to home '/' page
-// app.post('/books/:book_id', addBook);//????????
-// app.put('/update/:book_id', updateBook);//????????
+
+app.put('/books/:book_id', updateBook);
 
 // catch-all
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -94,7 +94,6 @@ function searchNewBooks(request, response){
 }
 
 function saveBookToDB(request, response) {
-  // console.log('$$$$$$$$$$$$$$$$$$$$$request.body',request.body);
 
   let { title, author, isbn, image_url, description, bookshelf} = request.body;
 
