@@ -9,9 +9,18 @@ function myFunction() {
 }
 
 
+
 $(document).ready(function(){
-  $('#buttonForm').click(function(){
-    $('#hidden').toggle();
+  // $('.form').hide();
+  $('.showButton').click(function(){
+    // var target = event.target.name;
+    // console.log(event.target.name);
+
+    var on = $('.form').is(':visible');
+    $('.form').slideToggle();
+    // }
+    $(this).html(on ? 'Select This Book' : 'Hide Form');
   });
 });
+
 
