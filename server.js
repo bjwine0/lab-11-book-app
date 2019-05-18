@@ -49,7 +49,7 @@ function getBooksFromDB(request, response){
   return client.query(SQL)
     .then(results => {
       console.log('line 55', 'results.rows', results.rows);
-      response.render('pages/index', { results: results.rows })
+      response.render('pages/index', { books: results.rows })
     })
     .catch(handleError);
 }
@@ -60,7 +60,7 @@ function searchForm (request, response){
 
 function viewDetails(request, response) {
 
-  console.log('BOOK ID = ', request.params.book_id);
+  console.log('❤️BOOK ID = ', request.params.book_id);
 
   let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [request.params.book_id];
@@ -68,7 +68,7 @@ function viewDetails(request, response) {
   return client.query(SQL, values)
     .then(results => {
       console.log('line 70', results.rows[0]);
-      return response.render('pages/books/show', { results: results.rows[0] });
+      return response.render('pages/books/show', { book: results.rows[0] });
     })
     .catch(err => handleError(err, response));
 }
@@ -86,7 +86,7 @@ function searchNewBooks(request, response){
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult)))
     .then(results => {
       console.log('line103','results[1].identifier',results); //[1].identifier
-      response.render('pages/searches/show', {searchResults: results})
+      response.render('pages/searches/show', {books: results})
     })
 
     .catch(err => handleError(err,response));

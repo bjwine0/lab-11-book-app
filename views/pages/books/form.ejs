@@ -1,0 +1,74 @@
+<!-- form action"add" -->
+<!-- in the detail view pass in include('../layouts/form', {formAction: 'update', book:book})
+in the new search view it might be {formAction: 'create', task:task} -->
+
+
+<!-- <%- 'update' === formAction ? "Update Book" : "Add Book" %> -->
+<!-- ^this is a conditional that will be determined by includes -->
+
+<form action="<%= 'update' === formAction ? `/searches/book_id` : `searches/book_id` %>" method="post"
+  id="<%= books.isbn %>" class="hide">
+  <!-- hidden input -->
+  <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
+  <!-- end hidden input -->
+
+  <fieldset>
+    <input type="text" name="title" value="<%= books.title %>" placeholder="Title" />
+
+    <input type="text" name="author" value="<%= books.author %>" placeholder="" />
+
+    <input type="text" name="isbn" value="<%= books.isbn %>" />
+
+    <input type="text" name="image_url" value="<%= books.image_url %>" />
+
+    <input type="textarea" name="description" value="<%= books.description %>" placeholder="Quick description of book" />
+
+    <!-- bookshelf option -->
+
+    <input type="text" name="bookshelf" value="<%= 'update' === formAction ? books.bookshelf : null %>" />
+
+    <!-- end bookshelf option -->
+
+
+    <!-- 'add book'||'save changes' option -->
+
+    <button id="showme-btn" type="submit">
+      <%- 'update' === formAction ? "Save Changes" : "Add to Collection" %>
+    </button>
+    <!-- end add/update button -->
+  </fieldset>
+
+</form>
+
+
+<!-- we want to pass the object into the form, and if we want form to be empty would be {book:''}, for prepopulated it would be {book:book} -->
+<!-- 
+  
+<form action="/searches/book_id" method="post" id="<%= books.isbn %>">
+            
+  <input type="text" name="title" value="<%= books.title %>" />
+  <input type="text" name="author" value="<%= books.author %>" />
+  <input type="textarea" name="description" value="<%= books.description %>" />
+  <input type="text" name="isbn" value="<%= books.isbn %>" />
+  <input type="text" name="image_url" value="<%= books.image_url %>" />
+            
+
+
+  <label for="bookshelf">Change Bookshelf:</label>
+  <input list="book-genres" id="bookshelf" name="bookshelf" placeholder="<%= books.bookshelf %>" />
+
+  <datalist id="book-genres">
+    <option value="Fantasy"></option>
+    <option value="Science Fiction"></option>
+    <option value="Westerns"></option>
+    <option value="Romance"></option>
+    <option value="Thriller"></option>
+    <option value="Mystery"></option>
+    <option value="Detective Story"></option>
+    <option value="Dystopia"></option>
+    <option value="General"></option>
+  </datalist>
+
+  <button type="button" name="<%= books.isbn%>" >Delete</button>
+  <button type="submit">Update Details</button>
+  </form> -->

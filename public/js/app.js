@@ -9,16 +9,23 @@ function myFunction() {
 }
 
 
+// $(document).ready(function(){
+//   $('.showButton').click(function(){
+//     var on = $(this.form).is(':visible');
+//     $(this.form).slideToggle();
+//     $(this).html(on ? 'Select This Book' : 'Hide Form');
+//   });
+// });
+
+// ------------------
+
+// this will make things display-- first hide...on click it will toggle display or hide
 $(document).ready(function(){
-  $('.showButton').click(function(){
-    var on = $(this.form).is(':visible');
-    $(this.form).slideToggle();
-    $(this).html(on ? 'Select This Book' : 'Hide Form');
+  $('.hide').hide();
+  $('.showhidden').on('click', function(){
+    $(this).next().slideToggle();
   });
 });
-
-
-
 
 
 

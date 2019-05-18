@@ -26,24 +26,28 @@
       </li>
     </ul>
       
-  <h1><%= searchResults.length %> Book Results</h1>
+  <h1><%= books.length %> Book Results</h1>
 
   <ul>
-    <% searchResults.forEach(volumeInfo => { %>
+    <% books.forEach(books => { %>
     <div>
-      <li class="img"><img src="<%= volumeInfo.image_url %>"></li>
-      <li class="title"><h4><%= volumeInfo.title %></h4></li>
-      <li class="author"><%= volumeInfo.authors %></li>
-      <li class="description"><%= volumeInfo.description %></li>
+      <!-- <li class="img"><img src="<%= books.image_url %>"></li>
+      <li class="title"><h4><%= books.title %></h4></li>
+      <li class="author"><%= books.authors %></li>
+      <li class="description"><%= books.description %></li> -->
+      <li data-book-id="<%= books.isbn %>">
+          <%- include('../books/detail', {books:books})%>
+        </li>
 
-      <button type="button" class="showButton" form="<%= volumeInfo.title %>" name="<%= volumeInfo.title %>" >Select this Book</button>
+      <!-- <button type="button" class="showButton" form="<%= books.title %>" name="<%= books.title %>" >Select this Book</button> -->
+      <button class="showhidden" form="<%= books.title %>" name="<%= books.title %>">Select Book</button>
 
-      <form action="/searches/book_id" method="post" id="<%= volumeInfo.title %>" class="form"> 
-        <input type="text" name="title" value="<%= volumeInfo.title %>" />
-        <input type="text" name="author" value="<%= volumeInfo.authors %>" />
-        <input type="textarea" name="description" value="<%= volumeInfo.description %>" />
-        <input type="text" name="isbn" value="<%= volumeInfo.identifier %>" />
-        <input type="text" name="image_url" value="<%= volumeInfo.image_url %>" />
+      <form action="/searches/book_id" method="post" id="<%= books.title %>" class="form"> 
+        <input type="text" name="title" value="<%= books.title %>" />
+        <input type="text" name="author" value="<%= books.authors %>" />
+        <input type="textarea" name="description" value="<%= books.description %>" />
+        <input type="text" name="isbn" value="<%= books.identifier %>" />
+        <input type="text" name="image_url" value="<%= books.image_url %>" />
 
         <label for="bookshelf">Place On a Bookshelf:</label>
         <input list="book-genres" id="bookshelf" name="bookshelf"  />
@@ -75,7 +79,7 @@
 </body>
 
 </html>
-
+<!-- 
 <label for="ice-cream-choice">Choose a flavor:</label>
 <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
 
@@ -85,4 +89,4 @@
     <option value="Mint">
     <option value="Strawberry">
     <option value="Vanilla">
-</datalist>
+</datalist> -->

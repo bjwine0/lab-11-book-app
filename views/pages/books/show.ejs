@@ -1,5 +1,4 @@
 <!-- books/show -->
-
 <!-- view details of one book from db -->
 
 <!DOCTYPE html>
@@ -26,8 +25,12 @@
         </ul>
       <ul>
           <li>
-            <%- include('detail', {results: results}) %>
+            <%- include('detail', {books:books}) %>
           </li>
+          <button type="submit">Delete Book</button>
+          <button type="button" name="<%= books.isbn%>"  class="showhidden">Modify Book</button>
+        
+          <%- include('form', {formAction: 'update', books:books})%>
         </ul>
   </main>
 <footer> 
